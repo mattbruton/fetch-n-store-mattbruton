@@ -2,4 +2,34 @@
     ViewBag.Title = "Home Page";
 }
 
-<h1>Test {{2+5}}</h1>
+<form>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="form-group col-sm-2 col-sm-offset-2">
+                <select id="select-http-methods" class="form-control">
+                    <option>GET</option>
+                    <option>HEAD</option>
+                </select>
+                <small>
+                    <label for="select-http-methods">HTTP Methods</label>
+                </small>
+            </div>
+
+            <div class="form-group col-sm-4">
+                <input type="text" id="input-url" class="form-control" placeholder="URL">
+            </div>
+
+            <div class="col-sm-2 text-center">
+                <button class="btn btn-primary col-sm-12">Fetch</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2 text-center col-sm-offset-8">
+                <button class="btn btn-primary col-sm-12 disabled">Store</button>
+            </div>
+        </div>
+
+    </div>
+</form>
