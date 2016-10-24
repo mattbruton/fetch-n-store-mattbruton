@@ -13,7 +13,7 @@
         var currentTime = Date.now();
 
         $http({
-            method: $scope.httpmethod,
+            method: $scope.httpMethod,
             url: $scope.url
         }).then(function successCallback(response) {
             $scope.responseList.push({
