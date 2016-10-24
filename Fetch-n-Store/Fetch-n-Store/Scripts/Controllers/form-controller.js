@@ -29,7 +29,7 @@
                 statusText: response.statusText,
                 url: $scope.url,
                 httpMethod: $scope.httpMethod,
-                responseTime: `${Date.now() - currentTime} ms`
+                responseTime: `${Date.now() - currentTime}ms`
             })
         })
     };
