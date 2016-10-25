@@ -14,7 +14,7 @@ namespace Fetch_n_Store.Models
         public string StatusCode { get; set; }
         public string HttpMethod { get; set; }
         public string ResponseTimeLength { get; set; }
-        public string TimeOfResponse { get; set; }
+        public string TimeOfRequest { get; set; }
 
     }
 }
