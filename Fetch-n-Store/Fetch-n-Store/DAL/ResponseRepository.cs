@@ -18,10 +18,10 @@ namespace Fetch_n_Store.DAL
         {
             return Context.Responses.ToList();
         }
-        public Response GetResponseById(int id)
+        public void AddResponse(Response _response)
         {
-            Response _response = Context.Responses.SingleOrDefault(r => r.ResponseId == id);
-            return _response;
+            Context.Responses.Add(_response);
+            Context.SaveChanges();
         }
     }
 }

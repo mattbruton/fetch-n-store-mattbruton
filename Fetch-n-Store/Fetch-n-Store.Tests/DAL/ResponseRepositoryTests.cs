@@ -53,5 +53,26 @@ namespace Fetch_n_Store.Tests.DAL
         {
             Assert.IsNotNull(repo);
         }
+
+        [TestMethod]
+        public void RepoEnsureRepoEmptyByDefault()
+        {
+            List<Response> actual_responses = repo.GetAllResponses();
+            int expected_response_count = 0;
+            int actual_response_count = actual_responses.Count();
+
+            Assert.AreEqual(expected_response_count, actual_response_count);
+        }
+
+        [TestMethod]
+        public void RepoEnsureRepoCanStoreReponses()
+        {
+            Response testResponse = new Response { ResponseId = 0, HttpMethod = "GET", ResponseTimeLength = "23ms", StatusCode = "200", TimeOfResponse = "Yesterday", URL = "http://api.github.com" };
+            repo.AddResponse(testResponse);
+            int expected_response_count = 1;
+            int actual_response_count = repo.GetAllResponses().Count();
+
+            Assert.AreEqual(expected_response_count, actual_response_count);
+        }
     }
 }
