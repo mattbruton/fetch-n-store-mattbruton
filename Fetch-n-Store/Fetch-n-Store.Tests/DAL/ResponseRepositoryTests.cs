@@ -17,6 +17,37 @@ namespace Fetch_n_Store.Tests.DAL
         List<Response> response_list { get; set; }
         ResponseRepository repo { get; set; }
 
+        public void ConnectMocksToDatastore()
+        {
+            var queryable_list = response_list.AsQueryable();
+
+            mock_response_table.As<IQueryable<Response>>().Setup(x => x.Provider).Returns(queryable_list.Provider);
+            mock_response_table.As<IQueryable<Response>>().Setup(x => x.Expression).Returns(queryable_list.Expression);
+            mock_response_table.As<IQueryable<Response>>().Setup(x => x.ElementType).Returns(queryable_list.ElementType);
+            mock_response_table.As<IQueryable<Response>>().Setup(x => x.GetEnumerator()).Returns(() => queryable_list.GetEnumerator());
+
+            mock_context.Setup(x => x.Responses).Returns(mock_response_table.Object);
+
+            mock_response_table.Setup(t => t.Add(It.IsAny<Response>())).Callback((Response v) => response_list.Add(v));
+        }
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            mock_context = new Mock<ResponseContext>();
+            mock_response_table = new Mock<DbSet<Response>>();
+            response_list = new List<Response>();
+            repo = new ResponseRepository(mock_context.Object);
+
+            ConnectMocksToDatastore();
+        }
+
+        [TestCleanup]
+        public void TearDown()
+        {
+            repo = null;
+        }
+
         [TestMethod]
         public void TestMethod1()
         {
