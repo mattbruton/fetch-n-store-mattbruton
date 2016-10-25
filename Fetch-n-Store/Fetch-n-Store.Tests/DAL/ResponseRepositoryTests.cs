@@ -49,8 +49,9 @@ namespace Fetch_n_Store.Tests.DAL
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void RepoEnsureRepoCanBeInstantiated()
         {
+            Assert.IsNotNull(repo);
         }
     }
 }

@@ -30,7 +30,7 @@
                 url: $scope.url,
                 httpMethod: $scope.httpMethod,
                 responseTime: `${Date.now() - currentTime}ms`
-            })
+            }) 
         })
     };
 
