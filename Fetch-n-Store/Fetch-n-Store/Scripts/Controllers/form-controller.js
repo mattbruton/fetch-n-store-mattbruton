@@ -33,4 +33,19 @@
             })
         })
     };
+
+    $scope.post = function () {
+
+        $http({
+            method: "POST",
+            url: ""
+        }).then(function successCallback(response) {
+           
+            // success stuff
+        }, function errorCallback(response) {
+           
+            // error stuff
+        })
+    };
+
 });
