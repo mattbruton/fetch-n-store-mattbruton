@@ -13,6 +13,8 @@ namespace Fetch_n_Store.Models
         public string URL { get; set; }
         public string StatusCode { get; set; }
         public string HttpMethod { get; set; }
-        public string ResponseTime { get; set; }
+        public string ResponseTimeLength { get; set; }
+        public string TimeOfResponse { get; set; }
+
     }
 }
