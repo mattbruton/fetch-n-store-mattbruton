@@ -15,6 +15,5 @@ namespace Fetch_n_Store.Models
         public string HttpMethod { get; set; }
         public string ResponseTimeLength { get; set; }
         public string TimeOfRequest { get; set; }
-
     }
 }

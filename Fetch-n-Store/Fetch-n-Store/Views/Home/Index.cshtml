@@ -35,16 +35,43 @@
                     <th>URL</th>
                     <th>HTTP Method</th>
                     <th>Response Time</th>
+                    <th>Time of Request</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="response in responseList">
-                    <td>{{response.status}}</td>
-                    <td>{{response.url}}</td>
-                    <td>{{ response.httpMethod}}</td>
-                    <td>{{response.responseTime}}</td>
-                    <td><button class="btn btn-primary btn-sm disabled">Store</button></td>
+                    <td>{{response.StatusCode}}</td>
+                    <td>{{response.URL}}</td>
+                    <td>{{response.HttpMethod}}</td>
+                    <td>{{response.ResponseTimeLength}}</td>
+                    <td>{{response.TimeOfRequest}}</td>
+                    <td><button class="btn btn-primary btn-sm" ng-click="store(response)">Store</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-hide="savedResponses.length < 1">
+        <h1 class="text-center">Information from Database</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Status Code</th>
+                    <th>URL</th>
+                    <th>HTTP Method</th>
+                    <th>Response Time</th>
+                    <th>Time of Request</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="response in savedResponses">
+                    <td>{{response.StatusCode}}</td>
+                    <td>{{response.URL}}</td>
+                    <td>{{response.HttpMethod}}</td>
+                    <td>{{response.ResponseTimeLength}}</td>
+                    <td>{{response.TimeOfRequest}}</td>
+                    <td><button class="btn btn-primary btn-sm" ng-click="delete(response.ResponseId)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
