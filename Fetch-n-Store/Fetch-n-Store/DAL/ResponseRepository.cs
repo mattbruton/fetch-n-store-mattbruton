@@ -28,5 +28,12 @@ namespace Fetch_n_Store.DAL
             Context.Responses.Add(_response);
             Context.SaveChanges();
         }
+
+        public void DeleteResponse(int id)
+        {
+            Response _response = Context.Responses.FirstOrDefault(r => r.ResponseId == id);
+            Context.Responses.Remove(_response);
+            Context.SaveChanges();
+        }
     }
 }

@@ -18,12 +18,6 @@ namespace Fetch_n_Store.Controllers
              return Repo.GetAllResponses();
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST api/<controller>
         public void Post([FromBody]dynamic value)
         {
@@ -33,5 +27,9 @@ namespace Fetch_n_Store.Controllers
         }
 
         // DELETE api/<controller>/{i}
+        public void Delete(int id)
+        {
+            Repo.DeleteResponse(id);
+        }
     }
 }

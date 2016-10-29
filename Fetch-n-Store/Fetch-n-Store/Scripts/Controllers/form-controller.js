@@ -38,29 +38,19 @@
     };
 
     $scope.store = function (responseObject) {
-
-        var dataToPass = {
-            URL: responseObject.URL,
-            StatusCode: responseObject.StatusCode,
-            HttpMethod: responseObject.HttpMethod,
-            ResponseTimeLength: responseObject.ResponseTimeLength,
-            TimeOfRequest: responseObject.TimeOfRequest
-        };
-
         $http({
             url: "api/Response/",
             method: "POST",
-            data: JSON.stringify(dataToPass),
+            data: JSON.stringify(responseObject),
             contentType: "application/json"
         }).then(function successCallback(response) {
-            console.log(responseObject);
-            return responseObject;
+            $scope.savedResponses = $scope.getStoredResponses();
         }, function errorCallback(response) {
             console.log("bad stuff!")
         });
     };
 
-    $scope.showStoredResponses = function () {
+    $scope.getStoredResponses = function () {
         $http({
             url: "/api/Response/",
             method: "GET"
@@ -70,5 +60,17 @@
             console.log("bad stuff!")
         });
     };
-    $scope.showStoredResponses();
+
+    $scope.delete = function (id) {
+        $http({
+            url: `/api/Response/${id}`,
+            method: "DELETE"
+        }).then(function successCallback(response) {
+            $scope.savedResponses = $scope.getStoredResponses();
+        }, function errorCallback(response) {
+            console.log("bad stuff!")
+        });
+    };
+
+    $scope.getStoredResponses();
 });
