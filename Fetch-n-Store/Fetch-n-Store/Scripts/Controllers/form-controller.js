@@ -12,6 +12,12 @@
 
     $scope.responseList = [];
 
+    $scope.changeRowOnSuccess = function (event) {
+        var target = angular.element(event.target);
+        target.parent().parent().addClass('alert alert-success');
+        target.addClass('disabled');
+    };
+
     $scope.fetch = function () {
        
         var currentTime = new Date();
@@ -37,7 +43,7 @@
         }) 
     };
 
-    $scope.store = function (responseObject) {
+    $scope.store = function (responseObject, event) {
         $http({
             url: "api/Response/",
             method: "POST",
@@ -45,6 +51,7 @@
             contentType: "application/json"
         }).then(function successCallback(response) {
             $scope.savedResponses = $scope.getStoredResponses();
+            $scope.changeRowOnSuccess(event);
         }, function errorCallback(response) {
             console.log("bad stuff!")
         });
