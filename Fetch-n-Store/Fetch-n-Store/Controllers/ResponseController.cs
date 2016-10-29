@@ -27,9 +27,17 @@ namespace Fetch_n_Store.Controllers
         }
 
         // DELETE api/<controller>/{i}
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
-            Repo.DeleteResponse(id);
+            try
+            {
+                Repo.DeleteResponse(id);
+                return Ok(string.Format("Response {0} removed from database.", id));
+            }
+            catch (ArgumentNullException)
+            {
+                return Ok("Error: Item does not exist in database.");
+            }    
         }
     }
 }
