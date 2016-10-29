@@ -31,7 +31,7 @@
                 URL: $scope.url,
                 HttpMethod: $scope.httpMethod,
                 ResponseTimeLength: `${Date.now() - currentTime}ms`,
-                TimeOfRequest: `${currentTime.toDateString()} - ${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`
+                TimeOfRequest: `${currentTime.toISOString()}`
             })
         }, function errorCallback(response) {
             if (response.status != -1) {
@@ -40,7 +40,7 @@
                     URL: $scope.url,
                     HttpMethod: $scope.httpMethod,
                     ResponseTimeLength: `${Date.now() - currentTime}ms`,
-                    TimeOfRequest: `${currentTime.toDateString()} - ${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`
+                    TimeOfRequest: `${currentTime.toISOString()}`
                 })
             } else {
                 console.log("nope");
