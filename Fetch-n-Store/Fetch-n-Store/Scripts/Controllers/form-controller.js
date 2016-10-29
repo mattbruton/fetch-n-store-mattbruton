@@ -12,6 +12,10 @@
 
     $scope.responseList = [];
 
+    $scope.clearFetchList = function () {
+        $scope.responseList.length = 0;
+    };
+
     $scope.changeRowOnSuccess = function (event) {
         var target = angular.element(event.target);
         target.parent().parent().addClass('alert alert-success');
