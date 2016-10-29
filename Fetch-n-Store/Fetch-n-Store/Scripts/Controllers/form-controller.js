@@ -34,12 +34,17 @@
                 TimeOfRequest: `${currentTime.toDateString()} - ${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`
             })
         }, function errorCallback(response) {
-            $scope.responseList.push({
-                status: response.status,
-                url: $scope.url,
-                httpMethod: $scope.httpMethod,
-                responseTime: `${Date.now() - currentTime}ms`
-            }) 
+            if (response.status != -1) {
+                $scope.responseList.push({
+                    StatusCode: response.status,
+                    URL: $scope.url,
+                    HttpMethod: $scope.httpMethod,
+                    ResponseTimeLength: `${Date.now() - currentTime}ms`,
+                    TimeOfRequest: `${currentTime.toDateString()} - ${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`
+                })
+            } else {
+                console.log("nope");
+            }  
         }) 
     };
 
