@@ -54,7 +54,7 @@
 
     $scope.store = function (responseObject, event) {
         $http({
-            url: "api/Response/",
+            url: "/api/Response/",
             method: "POST",
             data: JSON.stringify(responseObject),
             contentType: "application/json"
